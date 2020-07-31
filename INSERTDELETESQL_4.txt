@@ -1,0 +1,55 @@
+1.INSERT INTO Pc (code,model,speed,ram,hd,cd,price)
+values (20,2111,950,512,60,'52x',1100)
+
+2.
+INSERT INTO Product  VALUES
+    ('Z', 4003, 'Printer'),
+    ('Z', 4001, 'PC'),
+    ('Z', 4002, 'Laptop');
+3.
+INSERT INTO Pc  
+( model, code ,speed,price)
+VALUES (4444,22,1200,1350);
+
+4.
+
+INSERT INTO Pc (code,model,speed,ram,hd,price)
+select
+min(code)+20,
+model +1000,
+max(speed) ,
+max(ram)*2,
+max(hd)*2,
+max(price)/1.5
+from laptop
+group by model
+
+5.
+
+DELETE FROM PC WHERE
+pc.hd =(select min(hd) from pc)or
+pc.ram =(select min(ram) from pc)
+
+
+6.
+DELETE FROM laptop
+WHERE model NOT IN (SELECT model 
+FROM Product where maker in (select maker from product where type ='printer')
+     );
+
+7.
+UPDATE product
+SET maker = 'z' where type = 'printer' and maker ='a';
+
+
+8.
+DELETE FROM ships
+WHERE name in (select ship from outcomes where result = 'sunk' );
+
+
+9.
+update Classes
+set bore=bore*2.5,
+displacement= round(displacement/1.1,0)
+
+10.
